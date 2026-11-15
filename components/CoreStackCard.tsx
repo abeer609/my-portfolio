@@ -1,9 +1,7 @@
 import {
   SiTypescript,
-  SiVuedotjs,
   SiVuetify,
   SiNuxt,
-  SiKnexdotjs,
   SiNextdotjs,
   SiDjango,
 } from "react-icons/si";
