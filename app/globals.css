@@ -1,0 +1,225 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ------------------------------------------------------------------ */
+/*  Tokens                                                             */
+/* ------------------------------------------------------------------ */
+
+:root {
+  color-scheme: light;
+
+  --bg: #fafafa;
+  --bg-elevated: #ffffff;
+  --bg-subtle: #f3f4f6;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.16);
+  --fg: #0a0c0f;
+  --fg-body: #4b5159;
+  --fg-muted: #7c838d;
+  --accent: #dc2626;
+  --accent-strong: #dc2626;
+  --accent-hover: #b91c1c;
+  --accent-glow: rgba(239, 68, 68, 0.12);
+  --accent-tint: rgba(239, 68, 68, 0.05);
+  --nav-bg: rgba(250, 250, 250, 0.72);
+  --shadow-card: 0 1px 2px rgba(10, 12, 15, 0.04);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --bg: #0a0c0f;
+  --bg-elevated: #101317;
+  --bg-subtle: #151a1f;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --fg: #ffffff;
+  --fg-body: #b4bac2;
+  --fg-muted: #7c838d;
+  --accent: #ef4444;
+  --accent-strong: #dc2626;
+  --accent-hover: #b91c1c;
+  --accent-glow: rgba(239, 68, 68, 0.14);
+  --accent-tint: rgba(239, 68, 68, 0.06);
+  --nav-bg: rgba(10, 12, 15, 0.7);
+  --shadow-card: none;
+}
+
+@theme inline {
+  --color-canvas: var(--bg);
+  --color-surface: var(--bg-elevated);
+  --color-subtle: var(--bg-subtle);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-ink: var(--fg);
+  --color-body: var(--fg-body);
+  --color-muted: var(--fg-muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-hover: var(--accent-hover);
+
+  --font-sans:
+    var(--font-jakarta), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+
+  --text-display-2xl: 4.5rem; /* 72px */
+  --text-display-2xl--line-height: 5.625rem; /* 90px */
+  --text-display-2xl--letter-spacing: -0.02em;
+  /* Hero headline, tuned against reference/desktop-1440.png (88px / 96px) */
+  --text-hero: 5.5rem;
+  --text-hero--line-height: 6rem;
+  --text-hero--letter-spacing: -0.02em;
+  --text-display-xl: 3.75rem; /* 60px */
+  --text-display-xl--line-height: 4.5rem; /* 72px */
+  --text-display-xl--letter-spacing: -0.02em;
+  --text-display-lg: 3rem; /* 48px */
+  --text-display-lg--line-height: 3.75rem; /* 60px */
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-md: 2.25rem; /* 36px */
+  --text-display-md--line-height: 2.75rem; /* 44px */
+  --text-display-md--letter-spacing: -0.02em;
+  --text-display-sm: 1.875rem; /* 30px */
+  --text-display-sm--line-height: 2.375rem; /* 38px */
+  --text-display-sm--letter-spacing: 0em;
+  --text-xl: 1.25rem; /* 20px */
+  --text-xl--line-height: 1.875rem; /* 30px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-lg--line-height: 1.75rem; /* 28px */
+  --text-md: 1rem; /* 16px */
+  --text-md--line-height: 1.5rem; /* 24px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-sm--line-height: 1.25rem; /* 20px */
+  --text-xs: 0.75rem; /* 12px */
+  --text-xs--line-height: 1.125rem; /* 18px */
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-padding-top: 96px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg-body);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--fg);
+  }
+
+  section[id] {
+    scroll-margin-top: 96px;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reusable surfaces / utilities                                      */
+/* ------------------------------------------------------------------ */
+
+@layer components {
+  .page-container {
+    width: 100%;
+    max-width: 1168px; /* 1120px content + 24px gutters */
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+
+  .card-surface {
+    background:
+      linear-gradient(135deg, var(--accent-tint), transparent 55%),
+      var(--bg-elevated);
+    border: 1px solid var(--border);
+  }
+
+  .hero-glow {
+    background: radial-gradient(
+      60% 50% at 80% 5%,
+      var(--accent-glow),
+      transparent 70%
+    );
+  }
+
+  .contact-card-surface {
+    background:
+      radial-gradient(
+        80% 120% at 100% 0%,
+        var(--accent-glow),
+        transparent 60%
+      ),
+      linear-gradient(135deg, var(--accent-tint), transparent 55%),
+      var(--bg-elevated);
+    border: 1px solid var(--border);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Scroll reveal                                                      */
+/* ------------------------------------------------------------------ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 500ms ease-out,
+    transform 500ms ease-out;
+  will-change: opacity, transform;
+}
+
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
