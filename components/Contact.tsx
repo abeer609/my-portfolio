@@ -63,7 +63,7 @@ export function Contact() {
                   width={540}
                   height={540}
                   sizes="270px"
-                  className="size-[180px] rounded-full object-cover outline-2 outline-offset-8 outline-accent lg:size-[270px]"
+                  className="size-[180px] rounded-full object-cover outline-2 outline-offset-8 outline-accent lg:size-[270px] object-top"
                 />
               </div>
             </div>

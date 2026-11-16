@@ -1,29 +1,29 @@
 import {
   SiTypescript,
-  SiVuetify,
-  SiNuxt,
   SiNextdotjs,
   SiDjango,
+  SiTailwindcss,
+  SiPython,
+  SiNodedotjs,
 } from "react-icons/si";
-import { Globe } from "lucide-react";
 import { coreStack } from "@/data/content";
 import { cn } from "@/lib/cn";
 
 const iconStyles: Record<string, string> = {
-  Next: "text-[#3178C6]",
-  Nuxt: "text-[#00DC82]",
-  Vuetify: "text-[#1697F6]",
-  Typescript: "text-[#3178C6]",
-  i18n: "text-accent",
+  // Next: "text-[#3178C6]",
+  // Tailwind: "text-[#00DC82]",
+  // // Python: "text-[#1697F6]",
+  // Typescript: "text-[#3178C6]",
+  // i18n: "text-accent",
 };
 
 const icons: Record<string, React.ReactNode> = {
   django: <SiDjango className="size-4" aria-hidden="true"/>,
   Next: <SiNextdotjs className="size-4" aria-hidden="true" />,
-  Nuxt: <SiNuxt className="size-4" aria-hidden="true" />,
-  Vuetify: <SiVuetify className="size-4" aria-hidden="true" />,
+  Tailwind: <SiTailwindcss className="size-4" aria-hidden="true" />,
+  Python: <SiPython className="size-4" aria-hidden="true" />,
   Typescript: <SiTypescript className="size-4" aria-hidden="true" />,
-  i18n: <Globe className="size-4" aria-hidden="true" />,
+  "Node.js": <SiNodedotjs className="size-4" aria-hidden="true" />,
 };
 
 export function CoreStackCard() {

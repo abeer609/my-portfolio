@@ -1,4 +1,3 @@
-import { Rocket } from "lucide-react";
 import { footer } from "@/data/content";
 
 export function Footer() {
@@ -10,29 +9,7 @@ export function Footer() {
           <p>{footer.built}</p>
         </div>
 
-        <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          {footer.badges.map((badge, index) => (
-            <div
-              key={badge.title}
-              className="flex h-12 items-center gap-3 rounded-xl border border-line bg-surface px-4"
-            >
-              {index === 0 ? (
-                <Rocket className="size-4 text-accent" aria-hidden="true" />
-              ) : (
-                <span
-                  aria-hidden="true"
-                  className="size-2 rounded-full bg-accent"
-                />
-              )}
-              <div className="flex flex-col justify-center">
-                <span className="text-xs font-semibold text-ink">
-                  {badge.title}
-                </span>
-                <span className="text-xs text-muted">{badge.sub}</span>
-              </div>
-            </div>
-          ))}
-        </div>
+        
       </div>
     </footer>
   );
